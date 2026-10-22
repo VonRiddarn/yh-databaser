@@ -132,6 +132,7 @@ INNER JOIN COrder co ON pto.OrderId = co.Id
 WHERE co.CreatedDate >= '2026-08-26' - INTERVAL 12 MONTH
 GROUP BY pc.Id;
 
+-- TODO: Skriv om query UTAN AI!!!
 -- Kombinerat:
 -- Antal enheter sålda senaste 12 månaderna, och hur många som finns i lager
 -- Jag fick inte ihop resten själv, så jag AI genererade queryn...
@@ -185,6 +186,8 @@ LEFT JOIN SalesPerCategory sa ON pc.Id = sa.CategoryId;
 --    (Summera alla deras ordervärden)
 -- Vi vill ha ders namn och email. De ska få bonuskoder!
 -- ============================================
+-- TODO: Fixa denna query. Den säger vem som lagt mest beställningar, inte vem som lagt mest pengar!
+-- Den som lagt mest pengar är quantity * cost * N(Orders).
 SELECT CONCAT(c.Fname, ' ', c.LName) AS 'Kund', c.Email, COUNT(co.Id) as 'Antal ordrar'
 FROM COrder co
 INNER JOIN Customer c ON co.CustomerId = c.Id
